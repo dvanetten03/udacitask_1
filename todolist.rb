@@ -2,10 +2,35 @@ class TodoList
   attr_reader :title, :items
 
   # Initialize to-do list with a title and no items
-  def initialize(list, title)
+  def initialize(list_title)
     @title = list_title
     @items = Array.new
   end
+
+  # Method to rename list
+  def new_title(new_title)
+    @title = new_title
+  end
+
+  # Method to add items to list
+  def add_item(new_item)
+    item = Item.new(new_item)
+    @items << item
+  end
+
+  # Method to delete items from list
+  def remove_item(item)
+    @items.delete(item)
+  end
+
+  # Method to update the completion status of an item on the list
+  def update_status
+  end
+
+  # Method to print todo list
+  def print_list
+  end
+
 end
 
 class Item
@@ -17,15 +42,12 @@ class Item
     @completed_status = false
   end
 
-  def add_item(new_item)
-    item = Item.new(new_item)
-    @items << item
+  # Method to see if an item on the list is completed (boolean)
+  def completed?
+    @completed_status = false || true
   end
 
-  def remove_item(item)
-    @items.delete(item)
+  def printing_items
   end
 
-  
-    
 end
