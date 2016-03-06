@@ -47,6 +47,7 @@ class Item
     @completed_status = false || true
   end
 
+  # Method that formats the description and completion status of items
   def printing_items
   end
 
