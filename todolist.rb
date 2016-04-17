@@ -1,5 +1,5 @@
 class TodoList
-  attr_reader :title, :items
+  attr_accessor :title, :items
 
   # Initialize to-do list with a title and no items
   def initialize(list_title)
@@ -8,7 +8,7 @@ class TodoList
   end
 
   # Method to rename list
-  def new_title(new_title)
+  def rename(new_title)
     @title = new_title
   end
 
@@ -34,7 +34,7 @@ class TodoList
 end
 
 class Item
-  attr_reader :description, :completed_status
+  attr_accessor :description, :completed_status
 
   # Initialize item with a description and marked as not complete
   def initialize(item_description)
