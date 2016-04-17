@@ -29,47 +29,45 @@ class TodoList
   end
 
   # Method to update the completion status of an item on the list
-  def completed?(index)
+  def completed?
     return @items.all? {|item| item.completion_status == true}
   end
 
   # Method to print todo list
   def print_list
-    puts @name
-
-    @items.each do |item|
-      item.print_item
+  header = "#{@title} -- Completed: #{completed?}"
+    puts "-" * header.length
+    puts header
+    puts "-" * header.length
+    longest_word = @items.inject(0) do |previous_length, current_word|
+      current_length = current_word.description.length
+      current_length > previous_length ? current_length : previous_length
     end
+    @items.each_index {|index|
+      puts "#{index} - [#{items[index].priority}]#{@items[index].description}".ljust(longest_word + 10) + "Completed: #{@items[index].completion_status}"
+    }
   end
 
 end
 
 class Item
-  attr_accessor :description, :completed_status, :priority
+  attr_accessor :description, :completion_status, :priority
 
   # Initialize item with a description and marked as not complete
-  def initialize(item_description, completion_status)
+  def initialize(item_description, priority)
     @description = item_description
     @completion_status = false
+    @priority = priority
   end
 
   def toggle_status
     @completion_status = !@completion_status
   end
 
-  # Method to see if an item on the list is completed (boolean)
-  def completed?
-    @completion_status = false || true
-  end
-
-  # Method to say if item is high priority or not
-  def high_priority
-    @priority = false || true
-  end
 
   # Method that formats the description and completion status of items
   def print_item
-    puts "[#{@completed ? "X" : " "}] #{@description}"
+    puts "#{@description} Completed: #{@completion_status} Priority: #{@priority}"
   end
 
 end

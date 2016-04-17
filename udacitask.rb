@@ -4,10 +4,10 @@ require_relative 'todolist.rb'
 list = TodoList.new("Diane's List", "Diane")
 
 # Add four new items
-list.add_item("item_1", "true", "04Feb2016")
-list.add_item("item_2", "false", "04Aug2016")
-list.add_item("item_3", "false", "04Jun2016")
-list.add_item("item_4", "true", "04Jul2016")
+list.add_item("Study", 1)
+list.add_item("Grocery Shop", 3)
+list.add_item("Straighten House", 4)
+list.add_item("Pay Rent", 1)
 
 # Print the list
 list.print_list
@@ -25,13 +25,13 @@ list.remove_item(2)
 list.print_list
 
 # Update the completion status of the first item to complete
-list.completed?(1)
+list.toggle_status(1)
 
 # Print the list
 list.print_list
 
 # Update the title of the list
-list.rename("My New List")
+list.rename("Mom's List")
 
 # Print the list
 list.print_list
