@@ -1,0 +1,5 @@
+Three new features included in todolist
+
+Feature 1. Multiple users can create a list.
+Feature 2. Each item has high or low priority.
+Feature 3. Each item has a due date.
