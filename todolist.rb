@@ -9,28 +9,23 @@ class TodoList
   end
 
   # Method to rename list
-  def rename(new_title)
-    @title = new_title
+  def rename(list_title)
+    @title = list_title
   end
 
   # Method to add items to list
-  def add_item(new_item, completion_status = false, due_date)
-    item = Item.new(new_item, completion_status, due_date)
+  def add_item(new_item, priority=0)
+    item = Item.new(new_item, priority)
     @items << item
-  end
-
-  def toggle_status(index)
-    @items[index].toggle_status
-  end
-
-  # Method to add due date
-  def due_date(date)
-    @due_date = "#{date.strftime("%d-%m-%Y")}"
   end
 
   # Method to delete items from list
   def remove_item(index)
-    @items.delete(index)
+    @items.delete_at(index)
+  end
+
+  def toggle_status(index)
+    @items[index].toggle_status
   end
 
   # Method to update the completion status of an item on the list
@@ -53,7 +48,7 @@ class Item
   attr_accessor :description, :completed_status, :priority
 
   # Initialize item with a description and marked as not complete
-  def initialize(item_description, completion_status, due_date)
+  def initialize(item_description, completion_status)
     @description = item_description
     @completion_status = false
   end
@@ -70,11 +65,6 @@ class Item
   # Method to say if item is high priority or not
   def high_priority
     @priority = false || true
-  end
-
-  # Method to add due date
-  def due_date(date)
-    @due_date = "#{date.strftime("%Y-%m-%d")}"
   end
 
   # Method that formats the description and completion status of items
